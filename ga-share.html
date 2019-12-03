@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>GA内部分享</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-transition="fade-down">
+					<section>
+						<h1 style="font-size: 60px">云深技术常识指南(二)</h1>
+						<p style="font-size: 20px;margin-top: 200px;">
+							分享人：沈创
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							2019-07-15
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>IMSI、IMEI、MAC、PN</h3>
+					</section>
+					<section>
+						<h3>IMSI</h3>
+						<p style="font-size:28px;">国际移动用户识别码</p>
+						<img src="ga-share-images/imsi.jpg" alt="" style="width:50%;border:none;">
+						<p style="font-size:28px;">MCC:国家代号(中国460)；MNC:移动网号码；MSIN:移动用户识别码</p>
+						<p style="font-size:22px;">一张SIM卡里不仅有IMSI信息还有ICCID信息；ICCID只用来区别卡，而IMSI在接入网络时，会到运营商的服务器中进行验证。</p>
+					</section>
+					<section>
+						<h3>IMEI</h3>
+						<p style="font-size:28px;">国际移动设备识别码</p>
+						<img src="ga-share-images/imei.jpg" alt="" style="width:50%;border:none;">
+						<p style="font-size:28px;">TAC:型号核准码；FAC:产地；SNR:生产序号；SP:检验码</p>
+						<p style="font-size:28px;">双卡手机具有两个IMEI *#06#可进行查询</p>
+					</section>
+					<section>
+						<h3>MAC</h3>
+						<p style="font-size:28px;">网络设备生产时烧录在网卡上的EPROM</p>
+						<img src="ga-share-images/imei.jpg" alt="" style="width:50%;border:none;">
+						<p style="font-size:28px;">MAC地址：48位二进制数，通常表示为12位十六进制数；冒号和其他字符只是起分隔作用</p>
+					</section>
+					<section>
+							<h3>IMSI、IMEI、MAC、PN都是可以伪造的</h3>
+							<p style="font-size:28px;">比如：XPrivacy（基于Xposed框架）</p>
+							<p style="font-size:28px;">再比如：SNC（也是基于Xposed框架）</p>
+						</section>
+				</section>
+				<section>
+					<section>
+						<h3>TZ、JZ、YC</h3>
+					</section>
+					<section>
+						<h3>TZ</h3>
+						<p style="font-size:28px;">基于WIFI探测技术来识别AP附近已开启WIFI的智能手机或者WIFI终端</p>
+						<div>
+							<img src="ga-share-images/wifi-tanzhen2.png" alt="" style="width:70%;border:none;">
+						</div>
+					</section>
+					<section>
+						<h3>TZ</h3>
+						<div>
+							<img src="ga-share-images/wifi-tanzhen.png" alt="" style="width:70%;border:none;">
+						</div>
+						<p style="font-size: 12px;">更多关于beacon/probe frame: <a href="https://www.jianshu.com/p/c9f171da0c78">https://www.jianshu.com/p/c9f171da0c78</a> </p>
+					</section>
+					<section>
+						<h3>TZ</h3>
+						<p style="text-align: left;">特点：</p>
+						<ul>
+							<li>无需用户参与，无需连入到网络</li>
+							<li>Android IOS全兼容</li>
+							<li>自动探测区域内MAC地址</li>
+							<li>可以获取目标MAC地址、传输信道、帧类型、信号强度、所连接的热点名称等</li>
+						</ul>
+					</section>
+					<section>
+						<h3>TZ的干扰项</h3>
+						<p style="font-size:32px;">在Android7.1和IOS8以上的版本中，增加了Probe 请求帧使用假名MAC的功能。</p>
+						<div>
+							<img src="ga-share-images/wifi-ganrao-ios.jpg" alt="" style="width:20%;border:none;margin-right:10%;">
+							<img src="ga-share-images/wifi-ganrao-ios-2.jpg" alt="" style="width:20%;border:none;">
+						</div>
+					</section>
+					<section>
+						<h3>JZ和YC</h3>
+						<div>
+							<img src="ga-share-images/jz-img.jpg" alt="" style="width:40%;border:none;">
+						</div>
+					</section>
+					<section>
+						<h3>硬件设备</h3>
+						<div>
+							<img src="ga-share-images/light.png" alt="" style="width:20%;border:none;">
+						</div>
+						<div>
+							<img src="ga-share-images/upan.png" alt="" style="width:20%;border:none;margin-right: 15%">
+							<img src="ga-share-images/chongdianbao.png" alt="" style="width:20%;border:none;">
+						</div>
+					</section>
+					<section>
+						<h3>工作流程</h3>
+						<br>
+						<p style="font-size: 30px;line-height: 1.2;">采集到嫌疑人MAC信息和采集JZ信息</p>
+						<p style="font-size: 30px;line-height: 1.2;">↓</p>
+						<p style="font-size: 30px;line-height: 1.2;">根据JZ信息使用JZ产品定位嫌疑人方向(1-2公里范围)</p>
+						<p style="font-size: 30px;line-height: 1.2;">↓</p>
+						<p style="font-size: 30px;line-height: 1.2;">使用YC在1-2公里范围内进行扫描</p>
+						<p style="font-size: 30px;line-height: 1.2;">↓</p>
+						<p style="font-size: 30px;line-height: 1.2;">得到嫌疑人精准位置信息</p>
+					</section>
+				</section>
+				<section>
+					<h3>谢谢！</h3>
+				</section>
+			</div>
+		</div>
+		<script src="js/reveal.js"></script>
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
